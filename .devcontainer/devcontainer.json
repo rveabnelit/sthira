@@ -2,7 +2,10 @@
   "name": "STHIRA",
   "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
   },
   "forwardPorts": [3100],
   "portsAttributes": {
@@ -20,10 +23,10 @@
     "ALLOW_DEBUG_ENDPOINTS": "true",
     "NEXT_TELEMETRY_DISABLED": "1"
   },
-  "onCreateCommand": "npm install -g pnpm@11.7.0 && pnpm install --frozen-lockfile --ignore-scripts",
-  "postCreateCommand": "pnpm build",
+  "onCreateCommand": "sudo npm install -g pnpm@11.7.0 && pnpm install --frozen-lockfile --ignore-scripts",
+  "postCreateCommand": "pnpm build && bash .devcontainer/start.sh",
   "postStartCommand": "bash .devcontainer/start.sh",
-  "postAttachCommand": "echo 'STHIRA: откройте вкладку Ports → 3100 → Open in Browser'",
+  "postAttachCommand": "echo 'STHIRA: вкладка Ports → 3100 → Open in Browser'",
   "hostRequirements": {
     "cpus": 2
   }

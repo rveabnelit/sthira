@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Запуск STHIRA в Codespaces: сборка уже выполнена в postCreateCommand.
+# Запуск STHIRA в Codespaces. Идемпотентно: если сервер уже работает, ничего не делает.
 set -e
 cd "$(dirname "$0")/.."
 
@@ -13,16 +13,18 @@ if [ ! -d .next ]; then
   pnpm build
 fi
 
-nohup pnpm start > /tmp/sthira.log 2>&1 &
+# setsid отвязывает процесс от сессии lifecycle-скрипта Codespaces,
+# иначе сервер может быть остановлен после завершения postStartCommand.
+setsid -f bash -c 'exec pnpm start > /tmp/sthira.log 2>&1 < /dev/null'
 
-for _ in $(seq 1 40); do
+for _ in $(seq 1 60); do
   if curl -fsS http://127.0.0.1:3100/ >/dev/null 2>&1; then
-    echo "STHIRA запущена: http://localhost:3100 (порт 3100 → Public в Codespaces)"
+    echo "STHIRA запущена: http://localhost:3100"
     exit 0
   fi
   sleep 1
 done
 
 echo "Не удалось запустить STHIRA. Лог:"
-tail -n 60 /tmp/sthira.log
+tail -n 80 /tmp/sthira.log
 exit 1
