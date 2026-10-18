@@ -1,0 +1,30 @@
+{
+  "name": "STHIRA",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "forwardPorts": [3100],
+  "portsAttributes": {
+    "3100": {
+      "label": "STHIRA",
+      "onAutoForward": "openBrowser",
+      "visibility": "public"
+    }
+  },
+  "containerEnv": {
+    "NEXT_PUBLIC_APP_URL": "http://localhost:3100",
+    "DEMO_MODE": "true",
+    "SEED_DEMO_DATA": "true",
+    "SHOW_DEMO_HINTS": "student",
+    "ALLOW_DEBUG_ENDPOINTS": "true",
+    "NEXT_TELEMETRY_DISABLED": "1"
+  },
+  "onCreateCommand": "npm install -g pnpm@11.7.0 && pnpm install --frozen-lockfile --ignore-scripts",
+  "postCreateCommand": "pnpm build",
+  "postStartCommand": "bash .devcontainer/start.sh",
+  "postAttachCommand": "echo 'STHIRA: откройте вкладку Ports → 3100 → Open in Browser'",
+  "hostRequirements": {
+    "cpus": 2
+  }
+}

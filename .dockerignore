@@ -1,0 +1,14 @@
+node_modules
+.next
+data
+.tmp
+.tools
+.pnpm-store
+.devcontainer
+.github
+.git
+.env
+.env.local
+docs/screens
+public/images/_contact-sheet.jpg
+*.log

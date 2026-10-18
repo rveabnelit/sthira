@@ -1,0 +1,20 @@
+services:
+  sthira:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+    environment:
+      # Публичный адрес, по которому открывается платформа (для ссылок в письмах, sitemap и OG)
+      NEXT_PUBLIC_APP_URL: ${PUBLIC_URL:-http://localhost:3100}
+      DATABASE_PATH: /app/data/sthira.db
+      DEMO_MODE: ${DEMO_MODE:-true}
+      SEED_DEMO_DATA: ${SEED_DEMO_DATA:-true}
+      SHOW_DEMO_HINTS: ${SHOW_DEMO_HINTS:-student}
+      PAYMENT_WEBHOOK_SECRET: ${PAYMENT_WEBHOOK_SECRET:-change-me-before-production}
+      GUIDE_DAILY_LIMIT: ${GUIDE_DAILY_LIMIT:-30}
+    volumes:
+      - sthira-data:/app/data
+
+volumes:
+  sthira-data:
