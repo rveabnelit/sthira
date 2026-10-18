@@ -1,6 +1,6 @@
 node_modules
 .next
-data
+/data
 .tmp
 .tools
 .pnpm-store
@@ -10,5 +10,5 @@ data
 .env
 .env.local
 docs/screens
-public/images/_contact-sheet.jpg
+/public/images/_contact-sheet.jpg
 *.log

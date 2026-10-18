@@ -1,6 +1,6 @@
 node_modules/
 .next/
-data/
+/data/
 .tmp/
 .tools/
 .pnpm-store/
@@ -8,4 +8,4 @@ data/
 .env.local
 *.log
 *.tsbuildinfo
-public/images/_contact-sheet.jpg
+/public/images/_contact-sheet.jpg
