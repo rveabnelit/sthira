@@ -135,8 +135,8 @@ export function listStudents(opts: { q?: string; status?: string; sort?: string;
     opts.sort === "activity"
       ? "last_activity DESC NULLS LAST"
       : opts.sort === "name"
-        ? "display_name ASC"
-        : "created_at DESC";
+        ? "u.display_name ASC"
+        : "u.created_at DESC";
 
   const rows = all<{
     id: string;
