@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: sthira
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: DEMO_MODE
+        value: "true"
+      - key: SEED_DEMO_DATA
+        value: "true"
+      - key: SHOW_DEMO_HINTS
+        value: "student"
+      - key: PAYMENT_WEBHOOK_SECRET
+        generateValue: true
+      - key: GUIDE_DAILY_LIMIT
+        value: "30"

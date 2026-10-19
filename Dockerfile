@@ -28,5 +28,5 @@ COPY --from=builder /app/scripts ./scripts
 EXPOSE 3100
 VOLUME ["/app/data"]
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s \
-  CMD node -e "fetch('http://127.0.0.1:3100/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
-CMD ["node", "node_modules/next/dist/bin/next", "start", "-p", "3100", "-H", "0.0.0.0"]
+  CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||3100)+'/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+CMD ["sh", "-c", "node node_modules/next/dist/bin/next start -p ${PORT:-3100} -H 0.0.0.0"]

@@ -2,7 +2,8 @@ import type { MetadataRoute } from "next";
 import { listPractices } from "@/lib/data/practices";
 import { listPrograms } from "@/lib/data/programs";
 
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3100";
+const baseUrl =
+  process.env.NEXT_PUBLIC_APP_URL ?? process.env.RENDER_EXTERNAL_URL ?? "http://localhost:3100";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = ["", "/practice", "/programs", "/about", "/pricing", "/faq", "/contacts", "/terms", "/privacy", "/subscription-terms"].map(

@@ -9,7 +9,8 @@ import "./globals.css";
 import { ToastProvider } from "@/components/ui/toast";
 import { OfflineBanner } from "@/components/ui/offline-banner";
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3100";
+const appUrl =
+  process.env.NEXT_PUBLIC_APP_URL ?? process.env.RENDER_EXTERNAL_URL ?? "http://localhost:3100";
 
 export const metadata: Metadata = {
   metadataBase: new URL(appUrl),
