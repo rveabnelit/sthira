@@ -11,6 +11,7 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  output: "standalone",
   typescript: { ignoreBuildErrors: false },
   eslint: { ignoreDuringBuilds: true },
   experimental: {

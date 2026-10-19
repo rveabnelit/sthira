@@ -4,6 +4,7 @@ node_modules/
 .tmp/
 .tools/
 .pnpm-store/
+usb-dist/
 .env
 .env.local
 *.log
